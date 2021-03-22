@@ -21,6 +21,40 @@
   </head>
   <body style="text-align: center;">
     
+    <div class="container pb-4"><!-- NFT -->
+      <div class="row">
+      <div class="col-4"></div>
+      <div class="col-4">
+        <h2 class="pt-5">NFT</h2>
+        <div class="form-group pt-3">
+          <label for="paymentAmountInput">Amount</label>
+          <input class="form-control text-center" id="paymentAmountInput" aria-describedby="paymentAmount" placeholder="20" value="20">
+          <small id="paymentAmount" class="form-text text-muted">How much do you want to receive?</small>
+        </div>
+        <div class="form-group pt-1">
+          <label for="senderAddress">Sender</label>
+          <input class="form-control text-center" id="senderAddress" aria-describedby="senderAddressDesc" placeholder="0x317D875cA3B9f8d14f960486C0d1D1913be74e90" value="0x317D875cA3B9f8d14f960486C0d1D1913be74e90">
+          <label style="margin-top: 8px;" for="selectedNftToken">Selected NFT</label>
+          <input disabled class="form-control text-center" id="selectedNftToken" placeholder="" value="">
+          <small id="senderAddressDesc" class="form-text text-muted">Which NFT do you want to sell?</small>
+        </div>
+        
+        <button id="payWithNftButton" class="btn-lg mt-2">Pay with NFT</button>
+        <script>
+          var button = document.getElementById("payWithNftButton");
+          button.addEventListener("click",function(e){
+              DePayWidgets.Nft.Selector({
+                sender: document.getElementById("senderAddress").value,
+              }, function(tokenId){
+                document.getElementById("selectedNftToken").value = tokenId;
+              });
+            });
+        </script>
+      </div>
+      <div class="col-4"></div>
+    </div><!-- NFT -->
+    
+    
     <div class="container pb-4"><!-- Payment -->
       <div class="row">
       <div class="col-4"></div>
